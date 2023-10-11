@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.353">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Cheryl McKearin">
+
+<title>Unit 2: Rtutorial</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="Rtutorial_files/libs/clipboard/clipboard.min.js"></script>
+<script src="Rtutorial_files/libs/quarto-html/quarto.js"></script>
+<script src="Rtutorial_files/libs/quarto-html/popper.min.js"></script>
+<script src="Rtutorial_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="Rtutorial_files/libs/quarto-html/anchor.min.js"></script>
+<link href="Rtutorial_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="Rtutorial_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="Rtutorial_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="Rtutorial_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="Rtutorial_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Unit 2: Rtutorial</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Cheryl McKearin </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="week-6-working-with-data" class="level2">
+<h2 class="anchored" data-anchor-id="week-6-working-with-data">Week 6: Working with Data</h2>
+<p>In the previous R tutorial, we started to work on science classroom dataset. We applied the data intensive research steps to explore our data and investigate the relationship between students’ grades and time-spent.</p>
+<p>Let’s remember which libraries and functions we used!</p>
+<section id="your-turn" class="level4">
+<h4 class="anchored" data-anchor-id="your-turn"><u><strong>Your Turn:</strong></u></h4>
+<p>Please write down one or two sentence to explain why and how we use the following libraries and functions.</p>
+<ol type="1">
+<li><p><strong>tidyverse:</strong> Tidyverse is a collection of R packages that share data manipulation and visualization. It includes packages like dplyr, ggplot2, tidyr, and more, which are designed to work seamlessly together for data analysis and visualization.</p></li>
+<li><p><strong>skimr:</strong> skimr is a package within Tidyverse that provides functions for quickly summarizing and exploring the structure of a dataset, including data types, missing values, and summary statistics.</p></li>
+<li><p><strong>ggplot2:</strong> ggplot2 is a data visualization package in R. It allows you to create complex and customized plots using a “grammar of graphics” approach.</p></li>
+<li><p><strong>read_csv():</strong> This is a function from the readr package (part of Tidyverse) that is used to read CSV files into R as data frames. It’s commonly used for importing data from external sources.</p></li>
+<li><p><strong>view():</strong> The view() function opens a data frame in a spreadsheet-like viewer, making it easier to explore and interact with the data.</p></li>
+<li><p><strong>glimpse():</strong> glimpse() is a function that provides a concise summary of a data frame’s structure, displaying the first few rows and the data type of each column.</p></li>
+<li><p><strong>head():</strong> head() is a function that allows you to view the first few rows of a data frame. By default, it displays the first six rows.</p></li>
+<li><p><strong>tail():</strong> Similar to head(), tail() displays the last few rows of a data frame. By default, it shows the last six rows.</p></li>
+<li><p><strong>select():</strong> select() is a function used for selecting specific columns from a data frame. You can choose which columns to keep and which to exclude.</p></li>
+<li><p><strong>filter():</strong> filter() is another dplyr function that allows you to subset a data frame based on specified conditions or criteria. It keeps rows that meet the specified criteria.</p></li>
+<li><p><strong>arrange():</strong> arrange() is used to reorder rows in a data frame based on one or more columns. You can sort the data in ascending or descending order.</p></li>
+<li><p><strong>desc():</strong> This will sort a column in descending order.</p></li>
+<li><p><strong>geom_histogram():</strong> This is a function that is used to create histograms, which are used for visualizing the distribution of continuous variables.</p></li>
+<li><p><strong>geom_point():</strong> geom_point() is a function used to create scatterplots, where data points are represented as individual points on a two-dimensional graph.</p></li>
+</ol>
+</section>
+<section id="load-the-tidyverse-package" class="level3">
+<h3 class="anchored" data-anchor-id="load-the-tidyverse-package">Load the Tidyverse Package</h3>
+<p>Let’s start our R code along by loading the tidyverse package.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.3     ✔ readr     2.1.4
+✔ forcats   1.0.0     ✔ stringr   1.5.0
+✔ ggplot2   3.4.3     ✔ tibble    3.2.1
+✔ lubridate 1.9.3     ✔ tidyr     1.3.0
+✔ purrr     1.0.2     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+</div>
+</div>
+</section>
+<section id="load-the-online-science-class-data" class="level3">
+<h3 class="anchored" data-anchor-id="load-the-online-science-class-data">Load the online science class data</h3>
+<p>Now, load the online science class data from the data folder and assign your data to a new object.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>sci_classes <span class="ot">&lt;-</span><span class="fu">read_csv</span>(<span class="st">"Data/sci-online-classes.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Rows: 603 Columns: 30
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+chr  (6): course_id, subject, semester, section, Gradebook_Item, Gender
+dbl (23): student_id, total_points_possible, total_points_earned, percentage...
+lgl  (1): Grade_Category
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</div>
+</div>
+<p>You loaded the data, now what should we do?</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>sci_classes</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 603 × 30
+   student_id course_id     total_points_possible total_points_earned
+        &lt;dbl&gt; &lt;chr&gt;                         &lt;dbl&gt;               &lt;dbl&gt;
+ 1      43146 FrScA-S216-02                  3280                2220
+ 2      44638 OcnA-S116-01                   3531                2672
+ 3      47448 FrScA-S216-01                  2870                1897
+ 4      47979 OcnA-S216-01                   4562                3090
+ 5      48797 PhysA-S116-01                  2207                1910
+ 6      51943 FrScA-S216-03                  4208                3596
+ 7      52326 AnPhA-S216-01                  4325                2255
+ 8      52446 PhysA-S116-01                  2086                1719
+ 9      53447 FrScA-S116-01                  4655                3149
+10      53475 FrScA-S116-02                  1710                1402
+# ℹ 593 more rows
+# ℹ 26 more variables: percentage_earned &lt;dbl&gt;, subject &lt;chr&gt;, semester &lt;chr&gt;,
+#   section &lt;chr&gt;, Gradebook_Item &lt;chr&gt;, Grade_Category &lt;lgl&gt;,
+#   FinalGradeCEMS &lt;dbl&gt;, Points_Possible &lt;dbl&gt;, Points_Earned &lt;dbl&gt;,
+#   Gender &lt;chr&gt;, q1 &lt;dbl&gt;, q2 &lt;dbl&gt;, q3 &lt;dbl&gt;, q4 &lt;dbl&gt;, q5 &lt;dbl&gt;, q6 &lt;dbl&gt;,
+#   q7 &lt;dbl&gt;, q8 &lt;dbl&gt;, q9 &lt;dbl&gt;, q10 &lt;dbl&gt;, TimeSpent &lt;dbl&gt;,
+#   TimeSpent_hours &lt;dbl&gt;, TimeSpent_std &lt;dbl&gt;, int &lt;dbl&gt;, pc &lt;dbl&gt;, uv &lt;dbl&gt;</code></pre>
+</div>
+</div>
+<section id="your-turn-1" class="level4">
+<h4 class="anchored" data-anchor-id="your-turn-1"><u><strong>Your Turn:</strong></u></h4>
+<p>Examine the contents of sci_classes in your console. You should type the object name to the console and check that.</p>
+<p><strong>Question:</strong> Is your object a tibble? How do you know?</p>
+<p><strong>Your response here: Yes it is because it only shows 10 rows of data.</strong></p>
+<p><strong>Hint:</strong> Check the output in the console.</p>
+</section>
+</section>
+<section id="check-your-data-with-different-functions" class="level3">
+<h3 class="anchored" data-anchor-id="check-your-data-with-different-functions">Check your data with different functions</h3>
+<p>You can check your data with different functions. Let’s remember how we use different functions to check our data.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">view</span>(sci_classes)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(sci_classes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 30
+  student_id course_id     total_points_possible total_points_earned
+       &lt;dbl&gt; &lt;chr&gt;                         &lt;dbl&gt;               &lt;dbl&gt;
+1      43146 FrScA-S216-02                  3280                2220
+2      44638 OcnA-S116-01                   3531                2672
+3      47448 FrScA-S216-01                  2870                1897
+4      47979 OcnA-S216-01                   4562                3090
+5      48797 PhysA-S116-01                  2207                1910
+6      51943 FrScA-S216-03                  4208                3596
+# ℹ 26 more variables: percentage_earned &lt;dbl&gt;, subject &lt;chr&gt;, semester &lt;chr&gt;,
+#   section &lt;chr&gt;, Gradebook_Item &lt;chr&gt;, Grade_Category &lt;lgl&gt;,
+#   FinalGradeCEMS &lt;dbl&gt;, Points_Possible &lt;dbl&gt;, Points_Earned &lt;dbl&gt;,
+#   Gender &lt;chr&gt;, q1 &lt;dbl&gt;, q2 &lt;dbl&gt;, q3 &lt;dbl&gt;, q4 &lt;dbl&gt;, q5 &lt;dbl&gt;, q6 &lt;dbl&gt;,
+#   q7 &lt;dbl&gt;, q8 &lt;dbl&gt;, q9 &lt;dbl&gt;, q10 &lt;dbl&gt;, TimeSpent &lt;dbl&gt;,
+#   TimeSpent_hours &lt;dbl&gt;, TimeSpent_std &lt;dbl&gt;, int &lt;dbl&gt;, pc &lt;dbl&gt;, uv &lt;dbl&gt;</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(sci_classes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 30
+  student_id course_id     total_points_possible total_points_earned
+       &lt;dbl&gt; &lt;chr&gt;                         &lt;dbl&gt;               &lt;dbl&gt;
+1      97150 PhysA-S216-01                  2710                1803
+2      97265 PhysA-S216-01                  3101                2078
+3      97272 OcnA-S216-01                   2872                1733
+4      97374 BioA-S216-01                   8586                6978
+5      97386 BioA-S216-01                   2761                1937
+6      97441 FrScA-S216-02                  2607                2205
+# ℹ 26 more variables: percentage_earned &lt;dbl&gt;, subject &lt;chr&gt;, semester &lt;chr&gt;,
+#   section &lt;chr&gt;, Gradebook_Item &lt;chr&gt;, Grade_Category &lt;lgl&gt;,
+#   FinalGradeCEMS &lt;dbl&gt;, Points_Possible &lt;dbl&gt;, Points_Earned &lt;dbl&gt;,
+#   Gender &lt;chr&gt;, q1 &lt;dbl&gt;, q2 &lt;dbl&gt;, q3 &lt;dbl&gt;, q4 &lt;dbl&gt;, q5 &lt;dbl&gt;, q6 &lt;dbl&gt;,
+#   q7 &lt;dbl&gt;, q8 &lt;dbl&gt;, q9 &lt;dbl&gt;, q10 &lt;dbl&gt;, TimeSpent &lt;dbl&gt;,
+#   TimeSpent_hours &lt;dbl&gt;, TimeSpent_std &lt;dbl&gt;, int &lt;dbl&gt;, pc &lt;dbl&gt;, uv &lt;dbl&gt;</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(sci_classes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 603
+Columns: 30
+$ student_id            &lt;dbl&gt; 43146, 44638, 47448, 47979, 48797, 51943, 52326,…
+$ course_id             &lt;chr&gt; "FrScA-S216-02", "OcnA-S116-01", "FrScA-S216-01"…
+$ total_points_possible &lt;dbl&gt; 3280, 3531, 2870, 4562, 2207, 4208, 4325, 2086, …
+$ total_points_earned   &lt;dbl&gt; 2220, 2672, 1897, 3090, 1910, 3596, 2255, 1719, …
+$ percentage_earned     &lt;dbl&gt; 0.6768293, 0.7567261, 0.6609756, 0.6773345, 0.86…
+$ subject               &lt;chr&gt; "FrScA", "OcnA", "FrScA", "OcnA", "PhysA", "FrSc…
+$ semester              &lt;chr&gt; "S216", "S116", "S216", "S216", "S116", "S216", …
+$ section               &lt;chr&gt; "02", "01", "01", "01", "01", "03", "01", "01", …
+$ Gradebook_Item        &lt;chr&gt; "POINTS EARNED &amp; TOTAL COURSE POINTS", "ATTEMPTE…
+$ Grade_Category        &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ FinalGradeCEMS        &lt;dbl&gt; 93.45372, 81.70184, 88.48758, 81.85260, 84.00000…
+$ Points_Possible       &lt;dbl&gt; 5, 10, 10, 5, 438, 5, 10, 10, 443, 5, 12, 10, 5,…
+$ Points_Earned         &lt;dbl&gt; NA, 10.00, NA, 4.00, 399.00, NA, NA, 10.00, 425.…
+$ Gender                &lt;chr&gt; "M", "F", "M", "M", "F", "F", "M", "F", "F", "M"…
+$ q1                    &lt;dbl&gt; 5, 4, 5, 5, 4, NA, 5, 3, 4, NA, NA, 4, 3, 5, NA,…
+$ q2                    &lt;dbl&gt; 4, 4, 4, 5, 3, NA, 5, 3, 3, NA, NA, 5, 3, 3, NA,…
+$ q3                    &lt;dbl&gt; 4, 3, 4, 3, 3, NA, 3, 3, 3, NA, NA, 3, 3, 5, NA,…
+$ q4                    &lt;dbl&gt; 5, 4, 5, 5, 4, NA, 5, 3, 4, NA, NA, 5, 3, 5, NA,…
+$ q5                    &lt;dbl&gt; 5, 4, 5, 5, 4, NA, 5, 3, 4, NA, NA, 5, 4, 5, NA,…
+$ q6                    &lt;dbl&gt; 5, 4, 4, 5, 4, NA, 5, 4, 3, NA, NA, 5, 3, 5, NA,…
+$ q7                    &lt;dbl&gt; 5, 4, 4, 4, 4, NA, 4, 3, 3, NA, NA, 5, 3, 5, NA,…
+$ q8                    &lt;dbl&gt; 5, 5, 5, 5, 4, NA, 5, 3, 4, NA, NA, 4, 3, 5, NA,…
+$ q9                    &lt;dbl&gt; 4, 4, 3, 5, NA, NA, 5, 3, 2, NA, NA, 5, 2, 2, NA…
+$ q10                   &lt;dbl&gt; 5, 4, 5, 5, 3, NA, 5, 3, 5, NA, NA, 4, 4, 5, NA,…
+$ TimeSpent             &lt;dbl&gt; 1555.1667, 1382.7001, 860.4335, 1598.6166, 1481.…
+$ TimeSpent_hours       &lt;dbl&gt; 25.91944500, 23.04500167, 14.34055833, 26.643610…
+$ TimeSpent_std         &lt;dbl&gt; -0.18051496, -0.30780313, -0.69325954, -0.148446…
+$ int                   &lt;dbl&gt; 5.0, 4.2, 5.0, 5.0, 3.8, 4.6, 5.0, 3.0, 4.2, NA,…
+$ pc                    &lt;dbl&gt; 4.50, 3.50, 4.00, 3.50, 3.50, 4.00, 3.50, 3.00, …
+$ uv                    &lt;dbl&gt; 4.333333, 4.000000, 3.666667, 5.000000, 3.500000…</code></pre>
+</div>
+</div>
+</section>
+<section id="isolating-data-with-dplyr" class="level3">
+<h3 class="anchored" data-anchor-id="isolating-data-with-dplyr"><strong>Isolating Data with dplyr</strong></h3>
+<p>We will use select() function to select the following columns from our data.</p>
+<ul>
+<li><p>student_id</p></li>
+<li><p>subject</p></li>
+<li><p>semester</p></li>
+<li><p>FinalGradeCEMS</p></li>
+<li><p>After selecting these columns, assign that to a new object with a name of “student_grade”.</p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>student_grade <span class="ot">&lt;-</span>sci_classes <span class="sc">|&gt;</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span> (student_id,</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>          subject,</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>          semester,</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>          FinalGradeCEMS)</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>student_grade</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 603 × 4
+   student_id subject semester FinalGradeCEMS
+        &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;             &lt;dbl&gt;
+ 1      43146 FrScA   S216               93.5
+ 2      44638 OcnA    S116               81.7
+ 3      47448 FrScA   S216               88.5
+ 4      47979 OcnA    S216               81.9
+ 5      48797 PhysA   S116               84  
+ 6      51943 FrScA   S216               NA  
+ 7      52326 AnPhA   S216               83.6
+ 8      52446 PhysA   S116               97.8
+ 9      53447 FrScA   S116               96.1
+10      53475 FrScA   S116               NA  
+# ℹ 593 more rows</code></pre>
+</div>
+</div>
+<section id="your-turn-2" class="level4">
+<h4 class="anchored" data-anchor-id="your-turn-2"><u><strong>Your Turn:</strong></u></h4>
+<p>Examine students’ grades, what did you realize about it?</p>
+<p><strong>Your response here: It’s hard to make a decision about the data based on these specific columns.</strong></p>
+<p><strong>Hint:</strong> Check the missing data.</p>
+</section>
+</section>
+<section id="specific-select" class="level3">
+<h3 class="anchored" data-anchor-id="specific-select"><strong>Specific select</strong></h3>
+<p>Now, we will make a specific selection.</p>
+<ul>
+<li><p>Select all columns except subject and semester.</p></li>
+<li><p>Assign to a new object with a different name.</p></li>
+<li><p>Examine your data frame.</p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>new_object<span class="ot">&lt;-</span><span class="fu">select</span>(sci_classes, <span class="sc">-</span><span class="fu">c</span>(subject, semester))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Checking the data frame:</p>
+<pre><code>new_object</code></pre>
+<section id="your-turn-3" class="level4">
+<h4 class="anchored" data-anchor-id="your-turn-3"><u><strong>Your Turn:</strong></u></h4>
+<ul>
+<li><p>Select all columns except student_id and FinalGradeCEMS.</p></li>
+<li><p>Assign to a new object with a different name.</p></li>
+<li><p>Examine your data frame.</p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>your_turn<span class="ot">&lt;-</span><span class="fu">select</span>(sci_classes, <span class="sc">-</span><span class="fu">c</span>(student_id, FinalGradeCEMS))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="specific-select-1" class="level3">
+<h3 class="anchored" data-anchor-id="specific-select-1"><strong>Specific select</strong></h3>
+<ul>
+<li><p>Select only the columns that start with Time</p></li>
+<li><p>Assign to a new object with a different name.</p></li>
+<li><p>Use view() function to examine your data frame.</p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>time_object<span class="ot">&lt;-</span><span class="fu">select</span>(sci_classes, <span class="fu">starts_with</span>(<span class="st">"Time"</span>))</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">view</span>(time_object)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="your-turn-4" class="level4">
+<h4 class="anchored" data-anchor-id="your-turn-4"><u><strong>Your Turn:</strong></u></h4>
+<ul>
+<li><p>Select only the columns that ends with “r”</p></li>
+<li><p>Assign to a new object with a different name.</p></li>
+<li><p>Use view() function to examine your data frame.</p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>new_time_object<span class="ot">&lt;-</span><span class="fu">select</span>(sci_classes, <span class="fu">ends_with</span>(<span class="st">"r"</span>))</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">view</span>(new_time_object)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="filter-function" class="level3">
+<h3 class="anchored" data-anchor-id="filter-function">Filter Function</h3>
+<ul>
+<li><p>Filter the sci_classes data frame for just males.</p></li>
+<li><p>Assign to a new object.</p></li>
+<li><p>Use the head() function to examine your data frame.</p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>male_students<span class="ot">&lt;-</span>sci_classes <span class="sc">|&gt;</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Gender<span class="sc">==</span><span class="st">"M"</span>)</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(male_students)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 30
+  student_id course_id     total_points_possible total_points_earned
+       &lt;dbl&gt; &lt;chr&gt;                         &lt;dbl&gt;               &lt;dbl&gt;
+1      43146 FrScA-S216-02                  3280                2220
+2      47448 FrScA-S216-01                  2870                1897
+3      47979 OcnA-S216-01                   4562                3090
+4      52326 AnPhA-S216-01                  4325                2255
+5      53475 FrScA-S116-02                  1710                1402
+6      53475 FrScA-S216-01                  1209                 977
+# ℹ 26 more variables: percentage_earned &lt;dbl&gt;, subject &lt;chr&gt;, semester &lt;chr&gt;,
+#   section &lt;chr&gt;, Gradebook_Item &lt;chr&gt;, Grade_Category &lt;lgl&gt;,
+#   FinalGradeCEMS &lt;dbl&gt;, Points_Possible &lt;dbl&gt;, Points_Earned &lt;dbl&gt;,
+#   Gender &lt;chr&gt;, q1 &lt;dbl&gt;, q2 &lt;dbl&gt;, q3 &lt;dbl&gt;, q4 &lt;dbl&gt;, q5 &lt;dbl&gt;, q6 &lt;dbl&gt;,
+#   q7 &lt;dbl&gt;, q8 &lt;dbl&gt;, q9 &lt;dbl&gt;, q10 &lt;dbl&gt;, TimeSpent &lt;dbl&gt;,
+#   TimeSpent_hours &lt;dbl&gt;, TimeSpent_std &lt;dbl&gt;, int &lt;dbl&gt;, pc &lt;dbl&gt;, uv &lt;dbl&gt;</code></pre>
+</div>
+</div>
+<section id="your-turn-5" class="level4">
+<h4 class="anchored" data-anchor-id="your-turn-5"><u><strong>Your Turn:</strong></u></h4>
+<ul>
+<li><p>Filter the sci_classes data frame for just females.</p></li>
+<li><p>Assign to a new object.</p></li>
+<li><p>Use the tail() function to examine your data frame.</p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>female_students<span class="ot">&lt;-</span>sci_classes <span class="sc">|&gt;</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Gender<span class="sc">==</span><span class="st">"F"</span>)</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(female_students)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 30
+  student_id course_id     total_points_possible total_points_earned
+       &lt;dbl&gt; &lt;chr&gt;                         &lt;dbl&gt;               &lt;dbl&gt;
+1      97150 PhysA-S216-01                  2710                1803
+2      97265 PhysA-S216-01                  3101                2078
+3      97272 OcnA-S216-01                   2872                1733
+4      97374 BioA-S216-01                   8586                6978
+5      97386 BioA-S216-01                   2761                1937
+6      97441 FrScA-S216-02                  2607                2205
+# ℹ 26 more variables: percentage_earned &lt;dbl&gt;, subject &lt;chr&gt;, semester &lt;chr&gt;,
+#   section &lt;chr&gt;, Gradebook_Item &lt;chr&gt;, Grade_Category &lt;lgl&gt;,
+#   FinalGradeCEMS &lt;dbl&gt;, Points_Possible &lt;dbl&gt;, Points_Earned &lt;dbl&gt;,
+#   Gender &lt;chr&gt;, q1 &lt;dbl&gt;, q2 &lt;dbl&gt;, q3 &lt;dbl&gt;, q4 &lt;dbl&gt;, q5 &lt;dbl&gt;, q6 &lt;dbl&gt;,
+#   q7 &lt;dbl&gt;, q8 &lt;dbl&gt;, q9 &lt;dbl&gt;, q10 &lt;dbl&gt;, TimeSpent &lt;dbl&gt;,
+#   TimeSpent_hours &lt;dbl&gt;, TimeSpent_std &lt;dbl&gt;, int &lt;dbl&gt;, pc &lt;dbl&gt;, uv &lt;dbl&gt;</code></pre>
+</div>
+</div>
+<p>Let’s try filter function with two arguments now.</p>
+<ul>
+<li><p>Filter the sci_classes data frame for students whose</p></li>
+<li><p><strong>percentage_earned is greater than 0.8</strong></p></li>
+<li><p>in the class “BioA”</p></li>
+<li><p>Assign to a new object.</p></li>
+<li><p>Use the tail() function to examine your data frame.&nbsp;</p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>bio_students <span class="ot">&lt;-</span><span class="fu">filter</span>(sci_classes, percentage_earned<span class="sc">&gt;</span><span class="fl">0.8</span> <span class="sc">&amp;</span> subject <span class="sc">==</span> <span class="st">"BioA"</span>)</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>bio_students2 <span class="ot">&lt;-</span>sci_classes <span class="sc">|&gt;</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(percentage_earned<span class="sc">&gt;</span><span class="fl">0.8</span> <span class="sc">&amp;</span> subject <span class="sc">==</span><span class="st">"BioA"</span>)</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a><span class="fu">tail</span>(bio_students)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 30
+  student_id course_id    total_points_possible total_points_earned
+       &lt;dbl&gt; &lt;chr&gt;                        &lt;dbl&gt;               &lt;dbl&gt;
+1      91066 BioA-S116-01                  5766                4820
+2      91067 BioA-S116-01                  2672                2249
+3      92633 BioA-S116-01                  2954                2495
+4      95658 BioA-S216-01                  3362                2775
+5      96950 BioA-S216-01                  6190                4970
+6      97374 BioA-S216-01                  8586                6978
+# ℹ 26 more variables: percentage_earned &lt;dbl&gt;, subject &lt;chr&gt;, semester &lt;chr&gt;,
+#   section &lt;chr&gt;, Gradebook_Item &lt;chr&gt;, Grade_Category &lt;lgl&gt;,
+#   FinalGradeCEMS &lt;dbl&gt;, Points_Possible &lt;dbl&gt;, Points_Earned &lt;dbl&gt;,
+#   Gender &lt;chr&gt;, q1 &lt;dbl&gt;, q2 &lt;dbl&gt;, q3 &lt;dbl&gt;, q4 &lt;dbl&gt;, q5 &lt;dbl&gt;, q6 &lt;dbl&gt;,
+#   q7 &lt;dbl&gt;, q8 &lt;dbl&gt;, q9 &lt;dbl&gt;, q10 &lt;dbl&gt;, TimeSpent &lt;dbl&gt;,
+#   TimeSpent_hours &lt;dbl&gt;, TimeSpent_std &lt;dbl&gt;, int &lt;dbl&gt;, pc &lt;dbl&gt;, uv &lt;dbl&gt;</code></pre>
+</div>
+</div>
+<p><u><strong>Your Turn:</strong></u></p>
+<p>Filter the sci_classes data frame for students whose</p>
+<ul>
+<li><p>percentage_earned is smaller or equal to 0.6</p></li>
+<li><p>subject is equal to FrScA</p></li>
+<li><p>Assign to a new object.</p></li>
+<li><p>Use the head() function to examine your data frame.&nbsp;</p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>frsca_students <span class="ot">&lt;-</span><span class="fu">filter</span>(sci_classes, percentage_earned<span class="sc">&lt;</span><span class="fl">0.6</span> <span class="sc">&amp;</span> subject <span class="sc">==</span> <span class="st">"FrScA"</span>)</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(frsca_students)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 30
+  student_id course_id     total_points_possible total_points_earned
+       &lt;dbl&gt; &lt;chr&gt;                         &lt;dbl&gt;               &lt;dbl&gt;
+1      65116 FrScA-S216-01                  4320                2326
+2      77067 FrScA-S216-02                  3272                1896
+3      85287 FrScA-S216-01                  5792                3188
+4      85348 FrScA-S216-03                  2607                1380
+5      85650 FrScA-S116-01                  8206                4432
+6      85659 FrScA-S116-01                  3521                1845
+# ℹ 26 more variables: percentage_earned &lt;dbl&gt;, subject &lt;chr&gt;, semester &lt;chr&gt;,
+#   section &lt;chr&gt;, Gradebook_Item &lt;chr&gt;, Grade_Category &lt;lgl&gt;,
+#   FinalGradeCEMS &lt;dbl&gt;, Points_Possible &lt;dbl&gt;, Points_Earned &lt;dbl&gt;,
+#   Gender &lt;chr&gt;, q1 &lt;dbl&gt;, q2 &lt;dbl&gt;, q3 &lt;dbl&gt;, q4 &lt;dbl&gt;, q5 &lt;dbl&gt;, q6 &lt;dbl&gt;,
+#   q7 &lt;dbl&gt;, q8 &lt;dbl&gt;, q9 &lt;dbl&gt;, q10 &lt;dbl&gt;, TimeSpent &lt;dbl&gt;,
+#   TimeSpent_hours &lt;dbl&gt;, TimeSpent_std &lt;dbl&gt;, int &lt;dbl&gt;, pc &lt;dbl&gt;, uv &lt;dbl&gt;</code></pre>
+</div>
+</div>
+<p>Let’s use filter () function for the missing data.</p>
+<ul>
+<li><p>Filter the sci_classes data frame so rows with&nbsp;</p></li>
+<li><p>NA for points earned are removed.</p></li>
+<li><p>Assign to a new object.</p></li>
+<li><p>Use the glimpse() function to examine your data frame.</p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>clean_data <span class="ot">&lt;-</span>sci_classes <span class="sc">|&gt;</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(Points_Earned))</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(clean_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 511
+Columns: 30
+$ student_id            &lt;dbl&gt; 44638, 47979, 48797, 52446, 53447, 53475, 53475,…
+$ course_id             &lt;chr&gt; "OcnA-S116-01", "OcnA-S216-01", "PhysA-S116-01",…
+$ total_points_possible &lt;dbl&gt; 3531, 4562, 2207, 2086, 4655, 1710, 1209, 4641, …
+$ total_points_earned   &lt;dbl&gt; 2672, 3090, 1910, 1719, 3149, 1402, 977, 3429, 2…
+$ percentage_earned     &lt;dbl&gt; 0.7567261, 0.6773345, 0.8654282, 0.8240652, 0.67…
+$ subject               &lt;chr&gt; "OcnA", "OcnA", "PhysA", "PhysA", "FrScA", "FrSc…
+$ semester              &lt;chr&gt; "S116", "S216", "S116", "S116", "S116", "S116", …
+$ section               &lt;chr&gt; "01", "01", "01", "01", "01", "02", "01", "01", …
+$ Gradebook_Item        &lt;chr&gt; "ATTEMPTED", "POINTS EARNED &amp; TOTAL COURSE POINT…
+$ Grade_Category        &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+$ FinalGradeCEMS        &lt;dbl&gt; 81.70184, 81.85260, 84.00000, 97.77778, 96.11872…
+$ Points_Possible       &lt;dbl&gt; 10, 5, 438, 10, 443, 5, 12, 10, 5, 10, 220, 30, …
+$ Points_Earned         &lt;dbl&gt; 10.00, 4.00, 399.00, 10.00, 425.00, 2.50, 12.00,…
+$ Gender                &lt;chr&gt; "F", "M", "F", "F", "F", "M", "M", "M", "F", "F"…
+$ q1                    &lt;dbl&gt; 4, 5, 4, 3, 4, NA, NA, 4, 3, 5, NA, 4, 4, NA, 4,…
+$ q2                    &lt;dbl&gt; 4, 5, 3, 3, 3, NA, NA, 5, 3, 3, NA, 2, 4, NA, 3,…
+$ q3                    &lt;dbl&gt; 3, 3, 3, 3, 3, NA, NA, 3, 3, 5, NA, 2, 3, NA, 3,…
+$ q4                    &lt;dbl&gt; 4, 5, 4, 3, 4, NA, NA, 5, 3, 5, NA, 4, 5, NA, 4,…
+$ q5                    &lt;dbl&gt; 4, 5, 4, 3, 4, NA, NA, 5, 4, 5, NA, 4, 4, NA, 4,…
+$ q6                    &lt;dbl&gt; 4, 5, 4, 4, 3, NA, NA, 5, 3, 5, NA, 4, 4, NA, 3,…
+$ q7                    &lt;dbl&gt; 4, 4, 4, 3, 3, NA, NA, 5, 3, 5, NA, 4, 5, NA, 3,…
+$ q8                    &lt;dbl&gt; 5, 5, 4, 3, 4, NA, NA, 4, 3, 5, NA, 4, 4, NA, 4,…
+$ q9                    &lt;dbl&gt; 4, 5, NA, 3, 2, NA, NA, 5, 2, 2, NA, 2, 4, NA, 2…
+$ q10                   &lt;dbl&gt; 4, 5, 3, 3, 5, NA, NA, 4, 4, 5, NA, 4, 4, NA, 3,…
+$ TimeSpent             &lt;dbl&gt; 1382.7001, 1598.6166, 1481.8000, 1390.2167, 1479…
+$ TimeSpent_hours       &lt;dbl&gt; 23.04500167, 26.64361000, 24.69666667, 23.170278…
+$ TimeSpent_std         &lt;dbl&gt; -0.30780313, -0.14844697, -0.23466291, -0.302255…
+$ int                   &lt;dbl&gt; 4.2, 5.0, 3.8, 3.0, 4.2, NA, NA, 4.4, 3.4, 4.7, …
+$ pc                    &lt;dbl&gt; 3.50, 3.50, 3.50, 3.00, 3.00, NA, NA, 4.00, 3.00…
+$ uv                    &lt;dbl&gt; 4.000000, 5.000000, 3.500000, 3.333333, 2.666667…</code></pre>
+</div>
+</div>
+<p>Filter the sci_classes data for the following subjects:</p>
+<ul>
+<li><p>BioA</p></li>
+<li><p>PhysA</p></li>
+<li><p>OcnA</p></li>
+<li><p>Assign to a new object with a different name.</p></li>
+<li><p>Use the summary() function to examine your data frame.</p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>my_classes<span class="ot">&lt;-</span><span class="fu">filter</span>(sci_classes, subject <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"BioA"</span>, <span class="st">"PhysA"</span>, <span class="st">"OcnA"</span>))</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>myclasses2 <span class="ot">&lt;-</span>sci_classes <span class="sc">|&gt;</span></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(subject <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"BioA"</span>, <span class="st">"PhysA"</span>, <span class="st">"OcnA"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="arrange-function" class="level3">
+<h3 class="anchored" data-anchor-id="arrange-function">Arrange () Function</h3>
+<p>Let’s recall how we were using the arrange () function for our dataset.</p>
+<ul>
+<li><p>Arrange sci_classes by subject subject then&nbsp;</p></li>
+<li><p>percentage_earned in descending order.</p></li>
+<li><p>Assign to a new object.</p></li>
+<li><p>Use the str() function to examine your data frame.</p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>order_class<span class="ot">&lt;-</span>sci_classes <span class="sc">|&gt;</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(subject, <span class="fu">desc</span>(percentage_earned))</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(order_class)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>spc_tbl_ [603 × 30] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
+ $ student_id           : num [1:603] 70192 86488 96690 91175 86267 ...
+ $ course_id            : chr [1:603] "AnPhA-S116-02" "AnPhA-S116-01" "AnPhA-S216-01" "AnPhA-S116-02" ...
+ $ total_points_possible: num [1:603] 1936 3342 4804 3199 3045 ...
+ $ total_points_earned  : num [1:603] 1763 3033 4309 2867 2705 ...
+ $ percentage_earned    : num [1:603] 0.911 0.908 0.897 0.896 0.888 ...
+ $ subject              : chr [1:603] "AnPhA" "AnPhA" "AnPhA" "AnPhA" ...
+ $ semester             : chr [1:603] "S116" "S116" "S216" "S116" ...
+ $ section              : chr [1:603] "02" "01" "01" "02" ...
+ $ Gradebook_Item       : chr [1:603] "POINTS EARNED &amp; TOTAL COURSE POINTS" "POINTS EARNED &amp; TOTAL COURSE POINTS" "POINTS EARNED &amp; TOTAL COURSE POINTS" "POINTS EARNED &amp; TOTAL COURSE POINTS" ...
+ $ Grade_Category       : logi [1:603] NA NA NA NA NA NA ...
+ $ FinalGradeCEMS       : num [1:603] 96 87.4 64.8 82.2 35.1 ...
+ $ Points_Possible      : num [1:603] 10 28 10 5 50 15 10 10 353 460 ...
+ $ Points_Earned        : num [1:603] 7 26 3 5 50 11 8 10 330 452 ...
+ $ Gender               : chr [1:603] "F" "M" "F" "F" ...
+ $ q1                   : num [1:603] 4 4 4 5 5 4 5 4 NA NA ...
+ $ q2                   : num [1:603] 3 4 3 3 5 2 4 4 NA NA ...
+ $ q3                   : num [1:603] 3 2 2 3 3 3 4 3 NA NA ...
+ $ q4                   : num [1:603] 4 3 5 5 5 4 5 4 NA NA ...
+ $ q5                   : num [1:603] 4 3 4 5 5 4 5 4 NA NA ...
+ $ q6                   : num [1:603] 3 3 4 4 5 3 5 4 NA NA ...
+ $ q7                   : num [1:603] 3 3 3 3 4 4 5 4 NA NA ...
+ $ q8                   : num [1:603] 5 2 4 5 5 4 4 4 NA NA ...
+ $ q9                   : num [1:603] 2 3 3 3 5 1 4 4 NA NA ...
+ $ q10                  : num [1:603] 5 3 2 5 5 2 5 4 NA NA ...
+ $ TimeSpent            : num [1:603] 1537 3600 1970 1315 406 ...
+ $ TimeSpent_hours      : num [1:603] 25.62 60 32.83 21.92 6.77 ...
+ $ TimeSpent_std        : num [1:603] -0.194 1.328 0.125 -0.358 -1.029 ...
+ $ int                  : num [1:603] 4.4 3 3.8 5 5 3.9 4.6 4 4.8 4.6 ...
+ $ pc                   : num [1:603] 3 2.5 2.5 3 3.5 3.5 3.75 3.5 3.5 4.5 ...
+ $ uv                   : num [1:603] 2.67 3.33 3.33 3.33 5 ...
+ - attr(*, "spec")=
+  .. cols(
+  ..   student_id = col_double(),
+  ..   course_id = col_character(),
+  ..   total_points_possible = col_double(),
+  ..   total_points_earned = col_double(),
+  ..   percentage_earned = col_double(),
+  ..   subject = col_character(),
+  ..   semester = col_character(),
+  ..   section = col_character(),
+  ..   Gradebook_Item = col_character(),
+  ..   Grade_Category = col_logical(),
+  ..   FinalGradeCEMS = col_double(),
+  ..   Points_Possible = col_double(),
+  ..   Points_Earned = col_double(),
+  ..   Gender = col_character(),
+  ..   q1 = col_double(),
+  ..   q2 = col_double(),
+  ..   q3 = col_double(),
+  ..   q4 = col_double(),
+  ..   q5 = col_double(),
+  ..   q6 = col_double(),
+  ..   q7 = col_double(),
+  ..   q8 = col_double(),
+  ..   q9 = col_double(),
+  ..   q10 = col_double(),
+  ..   TimeSpent = col_double(),
+  ..   TimeSpent_hours = col_double(),
+  ..   TimeSpent_std = col_double(),
+  ..   int = col_double(),
+  ..   pc = col_double(),
+  ..   uv = col_double()
+  .. )
+ - attr(*, "problems")=&lt;externalptr&gt; </code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="pipe-operator" class="level2">
+<h2 class="anchored" data-anchor-id="pipe-operator">%&gt;% Pipe Operator</h2>
+<p>Using sci_classes data and the %&gt;% pipe operator:</p>
+<ul>
+<li><p>Select subject, section, time spent in hours and final course grade.</p></li>
+<li><p>Filter for students in OcnA courses with grades greater than or equal to 60.</p></li>
+<li><p>Arrange grades by section in descending order.</p></li>
+<li><p>Assign to a new object.</p></li>
+</ul>
+<p>Examine the contents using a method of your choosing.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>ocna_students<span class="ot">&lt;-</span>sci_classes <span class="sc">%&gt;%</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(subject, section, TimeSpent_hours, FinalGradeCEMS) <span class="sc">%&gt;%</span></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(subject<span class="sc">==</span><span class="st">"OcnA"</span> <span class="sc">&amp;</span> FinalGradeCEMS<span class="sc">&gt;</span><span class="dv">60</span>)  <span class="sc">%&gt;%</span></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(section))</span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a><span class="fu">view</span>(ocna_students)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="deriving-info-with-dplyr" class="level3">
+<h3 class="anchored" data-anchor-id="deriving-info-with-dplyr">Deriving info with dplyr</h3>
+<p>We will practice summarise () and group_by () functions now.</p>
+</section>
+<section id="summarise-function" class="level3">
+<h3 class="anchored" data-anchor-id="summarise-function">Summarise () Function</h3>
+<p>Using sci_classes data and the summarise() function:</p>
+<ul>
+<li><p>Get a distinct count of course ids.</p></li>
+<li><p>Use the %&gt;% operator</p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>sci_classes <span class="sc">%&gt;%</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">courses=</span><span class="fu">n_distinct</span>(course_id))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 1
+  courses
+    &lt;int&gt;
+1      26</code></pre>
+</div>
+</div>
+<ul>
+<li><p>Get a distinct count of course ids.</p></li>
+<li><p>Use the |&gt; operator</p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>sci_classes <span class="sc">|&gt;</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">courses=</span><span class="fu">n_distinct</span>(course_id))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 1
+  courses
+    &lt;int&gt;
+1      26</code></pre>
+</div>
+</div>
+</section>
+<section id="group_by-function" class="level3">
+<h3 class="anchored" data-anchor-id="group_by-function">Group_by () Function</h3>
+<p>Using the sci_classes data and the pipe operator.</p>
+<ul>
+<li><p>Filter final grades to remove NAs. &gt; !isna</p></li>
+<li><p>Group your data by <strong>subject</strong> and <strong>gender</strong>.</p></li>
+<li><p><strong>Summarise</strong> your data to calculate the following stats:</p>
+<ul>
+<li><p>total number of students</p></li>
+<li><p>mean final grade</p></li>
+<li><p>mean time spent in the course</p></li>
+</ul></li>
+<li><p>Assign to a new object</p></li>
+<li><p>Examine the contents using a method of your choosing.</p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>apple_cider<span class="ot">&lt;-</span>sci_classes <span class="sc">%&gt;%</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(FinalGradeCEMS)) <span class="sc">%&gt;%</span></span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(subject, Gender) <span class="sc">%&gt;%</span></span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">total=</span><span class="fu">sum</span>(student_id), <span class="at">grade=</span><span class="fu">mean</span>(FinalGradeCEMS),<span class="at">time=</span><span class="fu">mean</span>(TimeSpent_hours))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`summarise()` has grouped output by 'subject'. You can override using the
+`.groups` argument.</code></pre>
+</div>
+</div>
+</section>
+<section id="mutate-function" class="level3">
+<h3 class="anchored" data-anchor-id="mutate-function">Mutate () Function</h3>
+<p>Replace the dashed lines in the following code to;</p>
+<ul>
+<li><p>Create a new variable called score that is the product of percentage earned and 100</p></li>
+<li><p>Create a faceted scatter plot with hours spent in the course on the x-axis, score on the y-axis, and point colored by gender.</p></li>
+<li><p>Include an alpha value to your graph.</p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>sci_classes <span class="sc">%&gt;%</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">______ =</span> _______ <span class="sc">*</span> ______) <span class="sc">%&gt;%</span></span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">______ =</span> <span class="fu">____</span>(<span class="at">_ =</span> __________,</span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>                           <span class="at">_ =</span> __________,</span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>                           <span class="at">______ =</span> _______,</span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>                           <span class="at">______ =</span> ____)) <span class="sc">+</span></span>
+<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>subject)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="final-step" class="level2">
+<h2 class="anchored" data-anchor-id="final-step">Final Step:</h2>
+<p>You are almost done, all you need to is to render your file and publish it in one of the following platform.</p>
+<section id="your-turn-6" class="level4">
+<h4 class="anchored" data-anchor-id="your-turn-6"><u><strong>Your Turn:</strong></u></h4>
+<p><strong>Render File:</strong> For now, we will wrap up this work by converting our work into a webpage that can be used to communicate your learning and demonstrate some of your new R skills. To do so, you will need to “render” your document by clicking the Render button in the menu bar at that the top of this file. This will do two things; it will:</p>
+<ol type="1">
+<li><p>check through all your code for any errors; and,</p></li>
+<li><p>create a file in your directory that you can use to share you work through <a href="https://posit.cloud/learn/guide#publish-from-cloud">Posit Cloud</a>, <a href="https://rpubs.com" title="RPubs">RPubs</a> , <a href="https://pages.github.com" title="GitHub Pages">GitHub Pages</a>, <a href="https://quartopub.com" title="Quarto Pub">Quarto Pub</a>, or other methods.</p></li>
+<li><p>Submit your link to the Blackboard!</p></li>
+</ol>
+<p>Now that you’ve finished your Rtutorial study, scroll back to the very top of this Quarto Document and change the author: “YOUR NAME HERE” to your actual name surrounded by quotation marks like so: author: “Dr.&nbsp;Cansu Tatar”.</p>
+</section>
+<section id="section" class="level4">
+<h4 class="anchored" data-anchor-id="section"></h4>
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
